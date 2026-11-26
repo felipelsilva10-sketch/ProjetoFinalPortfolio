@@ -33,6 +33,9 @@ namespace ProjetoFinalPortfolio.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Matricula")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -99,6 +102,12 @@ namespace ProjetoFinalPortfolio.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Periodo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Professor")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
