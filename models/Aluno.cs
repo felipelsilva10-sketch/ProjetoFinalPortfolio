@@ -6,6 +6,7 @@
         public string Nome { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public int TurmaId { get; set; }
+        public string? Matricula { get; set; }
         public Turma? Turma { get; set; }
         public List<Projeto>? Projetos { get; set; }
     }
