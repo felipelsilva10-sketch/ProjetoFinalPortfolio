@@ -5,6 +5,7 @@
         public string Nome { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public int TurmaId { get; set; }
+        public string? Matricula { get; set; }
     }
 
     public class AlunoInfoDto
@@ -14,5 +15,6 @@
         public string Email { get; set; } = string.Empty;
         public int TurmaId { get; set; }
         public string? TurmaNome { get; set; }
+        public string? Matricula { get; set; }
     }
 }
