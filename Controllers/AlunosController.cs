@@ -33,7 +33,8 @@ namespace ProjetoFinalPortfolio.Controllers
             {
                 Nome = dto.Nome,
                 Email = dto.Email,
-                TurmaId = dto.TurmaId
+                TurmaId = dto.TurmaId,
+                Matricula = dto.Matricula
             };
 
             _context.Alunos.Add(aluno);
@@ -43,7 +44,9 @@ namespace ProjetoFinalPortfolio.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlunoInfoDto>>> GetAlunos([FromQuery] string? nome, [FromQuery] int? turmaId)
+        public async Task<ActionResult<IEnumerable<AlunoInfoDto>>> GetAlunos(
+            [FromQuery] string? nome,
+            [FromQuery] int? turmaId)
         {
             var alunos = await _context.Alunos
                 .AsNoTracking()
@@ -56,7 +59,8 @@ namespace ProjetoFinalPortfolio.Controllers
                     Nome = a.Nome,
                     Email = a.Email,
                     TurmaId = a.TurmaId,
-                    TurmaNome = a.Turma!.Nome
+                    TurmaNome = a.Turma!.Nome,
+                    Matricula = a.Matricula
                 })
                 .ToListAsync();
 
@@ -75,7 +79,8 @@ namespace ProjetoFinalPortfolio.Controllers
                     Nome = a.Nome,
                     Email = a.Email,
                     TurmaId = a.TurmaId,
-                    TurmaNome = a.Turma!.Nome
+                    TurmaNome = a.Turma!.Nome,
+                    Matricula = a.Matricula
                 })
                 .FirstOrDefaultAsync();
 
@@ -107,6 +112,7 @@ namespace ProjetoFinalPortfolio.Controllers
             aluno.Nome = dto.Nome;
             aluno.Email = dto.Email;
             aluno.TurmaId = dto.TurmaId;
+            aluno.Matricula = dto.Matricula;
 
             await _context.SaveChangesAsync();
 

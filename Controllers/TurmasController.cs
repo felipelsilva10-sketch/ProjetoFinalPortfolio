@@ -26,7 +26,9 @@ namespace ProjetoFinalPortfolio.Controllers
             var turma = new Turma
             {
                 Nome = dto.Nome,
-                Descricao = dto.Descricao
+                Descricao = dto.Descricao,
+                Periodo = dto.Periodo,
+                Professor = dto.Professor
             };
 
             _context.Turmas.Add(turma);
@@ -46,7 +48,9 @@ namespace ProjetoFinalPortfolio.Controllers
                 {
                     Id = t.Id,
                     Nome = t.Nome,
-                    Descricao = t.Descricao
+                    Descricao = t.Descricao,
+                    Periodo = t.Periodo,
+                    Professor = t.Professor
                 })
                 .ToListAsync();
 
@@ -63,7 +67,9 @@ namespace ProjetoFinalPortfolio.Controllers
                 {
                     Id = t.Id,
                     Nome = t.Nome,
-                    Descricao = t.Descricao
+                    Descricao = t.Descricao,
+                    Periodo = t.Periodo,
+                    Professor = t.Professor
                 })
                 .FirstOrDefaultAsync();
 
@@ -88,6 +94,8 @@ namespace ProjetoFinalPortfolio.Controllers
 
             turma.Nome = dto.Nome;
             turma.Descricao = dto.Descricao;
+            turma.Periodo = dto.Periodo;
+            turma.Professor = dto.Professor;
 
             await _context.SaveChangesAsync();
 
@@ -103,6 +111,7 @@ namespace ProjetoFinalPortfolio.Controllers
                 return NotFound(new { message = "Turma não encontrada" });
 
             var temAlunos = await _context.Alunos.AnyAsync(a => a.TurmaId == id);
+
             if (temAlunos)
                 return Conflict(new { message = "Não é possível excluir uma turma que possui alunos" });
 
